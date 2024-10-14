@@ -1,0 +1,30 @@
+{
+  "$schema": "./schema/package-schema.json",
+  "name": "service.gateway",
+  "version": "1.0.0",
+  "main": "./src/app.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --watch src --exec ts-node src/app.ts",
+    "build": "tsc",
+    "lint": "eslint . --ext .ts",
+    "prestart": "npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "@types/express": "^4.17.13",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "helmet": "^8.0.0",
+    "http-proxy-middleware": "^3.0.3",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "@types/http-proxy-middleware": "^1.0.0",
+    "typescript": "^5.6.3"
+  }
+}
