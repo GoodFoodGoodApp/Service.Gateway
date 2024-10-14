@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  gateway:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "${HTTP_PORT}:${HTTP_PORT}"
+        - "${HTTPS_PORT}:${HTTPS_PORT}"
+    environment:
+      - SERVICE_URL=${SERVICE_URL:-https://goodfood.gateway.io}
+    volumes:
+      - .:/usr/src/app/
+    env_file:
+      - .env
+    command: nodemon --watch src --exec ts-node src/app.ts

@@ -14,9 +14,9 @@ const serviceUrl = process.env.SERVICE_URL || "http://goodfood.gateway.io";
 const HTTP_PORT = process.env.HTTP_PORT || 3000;
 const HTTPS_PORT = process.env.HTTPS_PORT || 3443;
 
-// Load SSL/TLS certificates
-const privateKey = fs.readFileSync("certs/server.key", "utf8");
-const certificate = fs.readFileSync("certs/server.cert", "utf8");
+// Decode SSL/TLS certificates from environment variables
+const privateKey = Buffer.from(process.env.PRIVATE_KEY_BASE64 || "", "base64").toString("utf8");
+const certificate = Buffer.from(process.env.CERTIFICATE_BASE64 || "", "base64").toString("utf8");
 const credentials = { key: privateKey, cert: certificate };
 
 const app = express();
